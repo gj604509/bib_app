@@ -1,5 +1,5 @@
 <% provide(:title, 'About Us') %>
 <h1>About Us</h1>
-<p>This is the Home page for the About Us application</p>
+<p>This is the About Us page for the Bibliographic Application</p>
 <p>TODO : complete this page</p>
 
