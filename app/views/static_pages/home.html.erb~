@@ -1,5 +1,5 @@
 <% provide(:title, 'Home') %>
-<h1>Bib App</h1>
+<h1>Sample App</h1>
 <p>This is the Home page for the bibliographic application</p>
 <p>TODO : complete this page</p>
 
