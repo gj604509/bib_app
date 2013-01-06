@@ -1,6 +1,14 @@
 @import "bootstrap";
 
-$lightGray: #999;
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
 
 /* universal */
 
@@ -24,7 +32,7 @@ textarea {
   text-align: center;
   h1 {
     margin-bottom: 10px;
-  }  
+  }
 }
 
 /* typography */
@@ -46,7 +54,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $lightGray;
+  color: $grayLight;
 }
 
 p {
@@ -54,20 +62,21 @@ p {
   line-height: 1.7em;
 }
 
+
 /* header */
 
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: #fff;
+    color: white;
     text-decoration: none;
   }
 }
@@ -77,12 +86,12 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: $lightGray;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
   a {
-    color: #555;
+    color: $gray;
     &:hover { 
-      color: #222;
+      color: $grayDarker;
     }
   }  
   small { 
@@ -97,5 +106,4 @@ footer {
     }
   }
 }
-
 
