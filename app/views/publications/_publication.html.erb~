@@ -1,0 +1,13 @@
+<li>
+	<div class="pubAndDate">
+		<span class="date"><%= Date::MONTHNAMES[publication.month] %>, <%= publication.year %></span>
+		<%= publication.pub_name %> (<%= publication.pub_type %>)
+	</div>
+  <h5><%= publication.title %></h5>
+  <div class="summary"><%= publication.summary %></div>
+  <span class="numberPage">(<%= publication.pages %> pages)</span>
+  <div class="note">Notes : <%= publication.notes %></div>
+  <span class="timestamp">Add <%= time_ago_in_words(publication.created_at) %> ago.</span>
+</li>
+
+

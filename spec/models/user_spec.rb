@@ -140,5 +140,23 @@ describe User do
     its(:remember_token) { should_not be_blank }
   end
   
+   ######################### PUBLICATION ASSOCIATION #########################
+   
+   
+   describe "publication associations" do
+
+    before { @user.save }
+    let!(:older_publication) do 
+      FactoryGirl.create(:publication, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_publication) do
+      FactoryGirl.create(:publication, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right publications in the right order" do
+      @user.publications.should == [newer_publication, older_publication]
+    end
+  end
+  
 end
 

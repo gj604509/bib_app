@@ -27,6 +27,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:publications) }
 
   it { should be_valid }
 
@@ -137,6 +138,24 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+  
+   ######################### PUBLICATION ASSOCIATION #########################
+   
+   
+   describe "publication associations" do
+
+    before { @user.save }
+    let!(:older_publication) do 
+      FactoryGirl.create(:publication, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_publication) do
+      FactoryGirl.create(:publication, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right publications in the right order" do
+      @user.microposts.should == [newer_publication, older_publication]
+    end
   end
   
 end

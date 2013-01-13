@@ -37,7 +37,8 @@ describe "User pages" do
     it { should have_selector('h1',    text: 'Sign up') }
     it { should have_selector('title', text: full_title('Sign up')) }
   end
-  
+
+=begin  
   describe "profile page" do
   	let(:user) { FactoryGirl.create(:user) }
   	before { visit user_path(user) }
@@ -45,7 +46,25 @@ describe "User pages" do
   	it { should have_selector('h1',    text: user.name) }
   	it { should have_selector('title', text: user.name) }
 	end
-	
+=end
+
+	describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:publication, user: user, title: "Foo") }
+    let!(:m2) { FactoryGirl.create(:publication, user: user, title: "Bar") }
+
+    before { visit user_path(user) }
+
+    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('title', text: user.name) }
+
+    describe "publications" do
+      it { should have_content(m1.title) }
+      it { should have_content(m2.title) }
+      it { should have_content(user.publications.count) }
+    end
+  end
+
 	describe "signup" do
 
     before { visit signup_path }
