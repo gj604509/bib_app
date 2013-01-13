@@ -1,0 +1,15 @@
+<%= form_for(@publication) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<%= f.label :pub_name %> <%= f.text_field :pub_name %>
+  	<%= f.label :title %>	<%= f.text_field :title %>
+  	<%= f.label :pub_type %> <%= f.text_field :pub_type %>
+  	<%= f.label :year %> <%= f.text_field :year %>
+  	<%= f.label :month %> <%= f.text_field :month %>
+  	<%= f.label :pages %> <%= f.text_field :pages %>
+ 		<%= f.label :notes %> <%= f.text_area :notes %>
+    <%= f.label :summary %> <%= f.text_area :summary %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+
