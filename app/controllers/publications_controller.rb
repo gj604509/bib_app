@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-  before_filter :signed_in_user, only: [:create]
+  before_filter :signed_in_user #, only: [:create]
 
   def index
   end
@@ -10,6 +10,7 @@ class PublicationsController < ApplicationController
       flash[:success] = "Publication created!"
       redirect_to root_url
     else
+    	@feed_items = []
       render 'static_pages/home'
     end
   end

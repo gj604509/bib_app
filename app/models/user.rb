@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Publication.where("user_id = ?", id)
+    #publications
+  end
+  
   
   private
     def create_remember_token

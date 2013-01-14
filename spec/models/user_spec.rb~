@@ -28,6 +28,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:publications) }
+  it { should respond_to(:feed) }
 
   it { should be_valid }
 
@@ -154,7 +155,17 @@ describe User do
     end
 
     it "should have the right publications in the right order" do
-      @user.microposts.should == [newer_publication, older_publication]
+      @user.publications.should == [newer_publication, older_publication]
+    end
+    
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:publication, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_publication) }
+      its(:feed) { should include(older_publication) }
+      its(:feed) { should_not include(unfollowed_post) }
     end
   end
   
