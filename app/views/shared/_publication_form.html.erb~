@@ -1,14 +1,16 @@
 <%= form_for(@publication) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-  	<%= f.label :"* Name of the Publication" %> <%= f.text_field :pub_name %>
   	<%= f.label :"* Title of your Publication" %>	<%= f.text_field :title %>
+  	<%= f.label :"* Name of the Publication" %> <%= f.text_field :pub_name %>
   	<%= f.label :"* Type (newspaper or conference)" %> <%= f.text_field :pub_type %>
   	<%= f.label :"* Year" %> <%= f.text_field :year %>
   	<%= f.label :"* Month" %> <%= f.text_field :month %>
   	<%= f.label :"* Number of pages" %> <%= f.text_field :pages %>
- 		<%= f.label :"Note for the Publication" %> <%= f.text_area :notes %>
     <%= f.label :"* Summary of the Publication" %> <%= f.text_area :summary %>
+ 		<%= f.label :"Note for the Publication" %> <%= f.text_area :notes %>
+ 		@foo = "hello"
+ 		puts @foo
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

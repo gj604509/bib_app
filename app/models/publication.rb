@@ -12,16 +12,16 @@ class Publication < ActiveRecord::Base
   validates :pub_name, presence: true,
   										 length: { maximum: 256 }
   
-  VALID_YEAR_REGEX = /[1-2][0-9][0-9][0-9]/
+  @max = Time.now.year
   validates :year, presence: true,
-  								 length: { :is => 4 },
-  								 format: { with: VALID_YEAR_REGEX }
+  								 numericality: { :greater_than => 1899 , :less_than_or_equal_to => @max}
+  								
+  						
+  validates :month, presence: true,
+  									numericality: { :greater_than => 0 , :less_than => 13}
   
-  validates :month, presence: true
-  
-  VALID_PAGE_REGEX = /[1-9]+[0-9]*/
   validates :pages, presence: true,
-  									format: { with: VALID_PAGE_REGEX }
+  									numericality: { :greater_than => 0 }
   
   #validates :notes, presence: true
   
